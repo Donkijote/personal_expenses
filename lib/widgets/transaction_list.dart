@@ -35,6 +35,41 @@ class TransactionList extends StatelessWidget {
                 var tx = _userTransactions[i];
                 return Card(
                   elevation: 3,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                        child: FittedBox(
+                          child: Text(
+                            '\$${tx.amount.toStringAsFixed(2)}',
+                          ),
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                      tx.title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                      DateFormat().format(tx.date),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                );
+              },
+              itemCount: _userTransactions.length,
+            ),
+    );
+  }
+}
+
+/*return Card(
+                  elevation: 3,
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -77,10 +112,4 @@ class TransactionList extends StatelessWidget {
                       )
                     ],
                   ),
-                );
-              },
-              itemCount: _userTransactions.length,
-            ),
-    );
-  }
-}
+                );*/
